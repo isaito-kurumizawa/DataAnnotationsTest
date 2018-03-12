@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace DataAnnotationsTest.Controllers
+{
+    public class ValuesController : ApiController
+    {
+        // GET api/values
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET api/values/5
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/values
+        public void Post(Models value)
+        {
+
+        }
+
+        // PUT api/values/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE api/values/5
+        public void Delete(int id)
+        {
+        }
+    }
+    public class Models
+    {
+        [Required(ErrorMessage = "Hoge1がない！")]
+        public string Hoge1 { get; set; }
+        [RegularExpression(@"[0-9]+", ErrorMessage = "Hoge2が数字じゃない！")]
+        public string Hoge2 { get; set; }
+    }
+}
